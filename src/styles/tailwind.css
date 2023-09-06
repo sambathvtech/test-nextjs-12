@@ -1,0 +1,40 @@
+/* Tailwind css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-full {
+    @apply px-5 xl:px-0 w-full xl:max-w-[840px] max-w-[1425px] mx-auto;
+  }
+
+  .container-fluid {
+    @apply w-full max-w-[1425px] mx-auto;
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-[24px] font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-[20px] font-bold leading-tight;
+  }
+
+  h3 {
+    @apply text-[18px] font-bold leading-tight;
+  }
+
+  h4 {
+    @apply text-[16px] font-light leading-tight;
+  }
+
+  h5 {
+    @apply text-[14px] font-light leading-tight;
+  }
+
+  h6 {
+    @apply text-[12px] font-light leading-tight;
+  }
+}

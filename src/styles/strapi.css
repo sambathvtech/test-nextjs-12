@@ -1,0 +1,57 @@
+/* inter-regular - latin_cyrillic */
+
+/* @font-face {
+  font-family: inter;
+  font-style: normal;
+  font-weight: 400;
+  src: local('inter'), url('../fonts/inter/Inter-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: inter-bold;
+  font-style: normal;
+  font-weight: bolder;
+  src: local('inter-bold'), url('../fonts/inter/Inter-Bold.ttf');
+  font-display: swap;
+} */
+
+.strapi-content h1 {
+  @apply font-bold clear-both;
+}
+
+.strapi-content h2 {
+  @apply font-bold clear-both mt-[2px] mb-[5px];
+}
+
+.strapi-content h3 {
+  @apply font-bold clear-both mt-[2px] mb-[5px];
+}
+
+.strapi-content h4 {
+  @apply font-bold clear-both mt-[2px] mb-[5px];
+}
+
+.strapi-content h5 {
+  @apply font-bold clear-both mt-[2px] mb-[5px];
+}
+
+.strapi-content h6 {
+  @apply font-bold clear-both mt-[2px] mb-[5px];
+}
+
+.strapi-content p {
+  @apply sm:text-justify my-[20px];
+}
+
+.strapi-content a {
+  @apply underline font-bold;
+}
+
+.strapi-content a:hover {
+  @apply opacity-80;
+}
+
+.strapi-content ol {
+  @apply my-[10px] pl-[20px] list-decimal list-outside;
+}

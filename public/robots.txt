@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.example.com
+
+# Sitemaps
+Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://www.example.com/sitemap-main.xml
+Sitemap: https://www.example.com/sitemap-blog.xml
+Sitemap: https://www.example.com/sitemap-category.xml

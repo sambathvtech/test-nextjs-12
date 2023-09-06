@@ -1,0 +1,35 @@
+.menu-in {
+  right: 0;
+  animation-name: menuIn;
+  animation-duration: 0.5s;
+}
+
+.menu-out {
+  right: -2000px;
+  animation-name: menuOut;
+  animation-duration: 0.5s;
+}
+
+@keyframes menuIn {
+  from {
+    right: -2000px;
+    display: none;
+  }
+
+  to {
+    display: block;
+    right: 0;
+  }
+}
+
+@keyframes menuOut {
+  from {
+    display: block;
+    right: 0;
+  }
+
+  to {
+    right: -2000px;
+    display: none;
+  }
+}
