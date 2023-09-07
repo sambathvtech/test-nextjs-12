@@ -35,8 +35,6 @@ export async function getAllBlogs() {
     resData.json()
   );
 
-  console.log(count, 'count');
-
   const data = await getCountItem(count);
 
   return data;
