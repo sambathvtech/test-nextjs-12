@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-restricted-syntax */
 import N from 'numeral';
 import { getCMSDomain } from './dev';
 
@@ -38,3 +40,42 @@ export function youtubeURLParser(url) {
   if (match && match[7].length === 11) return `https://www.youtube.com/embed/${match[7]}`;
   return false;
 }
+
+export const getDataBySiteId = (data, site1) => {
+  const arr = [];
+
+  for (const load of data) {
+    if (load.related || load.related.length > 0) {
+      for (const load1 of load.related) {
+        const check = load1?.sites.findIndex((ele) => ele === site1);
+        if (check > -1) {
+          arr.push({
+            id: load.id,
+            url: load.url,
+          });
+          break;
+        }
+      }
+    }
+  }
+
+  return arr;
+};
+
+export const getDataBySiteIdByContentType = (data) => {
+  const arr = [];
+
+  for (const load of data) {
+    if (load.related || load.related.length > 0) {
+      for (const load1 of load.related) {
+        const check = load1?.__contentType.findIndex((ele) => ele === 'SitePosts');
+        if (check > -1) {
+          arr.push(load);
+          break;
+        }
+      }
+    }
+  }
+
+  return arr;
+};

@@ -1,18 +1,50 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-const download = require('images-downloader').images;
+
+import { fetchDataByGet, fetchImage } from '@service/strapi';
+
+function getItem(start) {
+  return fetch(
+    fetchDataByGet(`/upload/files`, {
+      _limit: 100,
+      _start: start,
+    })
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      return data.map((load) => fetchImage(load.url));
+      // return data;
+    });
+}
+
+async function getCountItem(newData) {
+  const itemReq = await [...Array(Math.ceil(newData / 100))].map(async (_, idx) => {
+    return getItem(idx * 100);
+  });
+  return Promise.all(itemReq).then((result) => {
+    const newArr = [];
+    result.map((load) => {
+      return load.map((load1) => newArr.push(load1));
+    });
+
+    return newArr;
+  });
+}
+
+export async function getAllBlogs() {
+  const count = await fetch(fetchDataByGet('/upload/files/count')).then((resData) =>
+    resData.json()
+  );
+
+  console.log(count, 'count');
+
+  const data = await getCountItem(count);
+
+  return data;
+}
 
 export default async (req, res) => {
-  const dest = '/Users/vtech/Downloads/test';
-
-  // An array of image(s) to download
-  const images = ['https://cdn-msp.18comic.org/media/photos/476385/00002.webp?v=1693911057'];
-
-  download(images, dest)
-    .then((result) => {
-      console.log('Images downloaded', result);
-    })
-    .catch((error) => console.log('downloaded error', error));
+  const data = await getAllBlogs();
 
   res.statusCode = 200;
-  res.json({ name: 'John Doe' });
+  res.json({ data });
 };

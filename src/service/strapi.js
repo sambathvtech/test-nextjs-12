@@ -1,8 +1,8 @@
 import { getCMSDomain } from '@utilities/dev';
 
 export const fetchDataByGet = (url, params = {}) => {
-  const newParams = `?sites.domain=${process?.env?.NEXT_PUBLIC_API_URL || '/'}&${
-    Object.keys(params).length > 0 ? `${new URLSearchParams(params).toString()}` : ''
+  const newParams = `${
+    Object.keys(params).length > 0 ? `?${new URLSearchParams(params).toString()}` : ''
   }`;
 
   return `${getCMSDomain()}${url}${newParams}`;
